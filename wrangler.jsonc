@@ -3,6 +3,10 @@
 {
   "name": "srjohn",
   "compatibility_date": "2026-09-01",
+  // liga o endereço gratuito https://srjohn.<sua-conta>.workers.dev
+  "workers_dev": true,
+  // e um endereço de prévia para cada versão enviada
+  "preview_urls": true,
   "assets": {
     // só a pasta public/ vai para o ar (docs/ e testes/ ficam de fora)
     "directory": "./public"
