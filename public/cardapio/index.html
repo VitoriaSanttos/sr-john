@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cardápio · Sr. John Chocolates & Café</title>
+<meta name="description" content="Cardápio digital do Sr. John Chocolates & Café: cafés, bebidas quentes e geladas, lanches e sobremesas.">
+<meta name="theme-color" content="#f6efe7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1411" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6efe7;
+    --surface: #fffaf4;
+    --ink: #2f221d;
+    --ink-soft: #6e5c52;
+    --ink-faint: #9b887b;
+    --line: #e6d8c9;
+    --accent: #a9533f;      /* terracota do logo */
+    --accent-soft: #f3e2d8;
+    --chip-bg: #efe3d6;
+    --leader: #d4c2b0;
+    --on-accent: #fffaf4;
+    --shadow: 0 1px 2px rgba(40, 30, 20, .06), 0 4px 16px rgba(40, 30, 20, .05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1b1411;
+      --surface: #2a201b;
+      --ink: #f5ebe1;
+      --ink-soft: #c2b0a3;
+      --ink-faint: #8f7d70;
+      --line: #3a2d26;
+      --accent: #d27a63;
+      --accent-soft: #3a2620;
+      --chip-bg: #33271f;
+      --leader: #54443a;
+    --on-accent: #1b1411;
+      --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1b1411;
+    --surface: #2a201b;
+    --ink: #f5ebe1;
+    --ink-soft: #c2b0a3;
+    --ink-faint: #8f7d70;
+    --line: #3a2d26;
+    --accent: #d27a63;
+    --accent-soft: #3a2620;
+    --chip-bg: #33271f;
+    --leader: #54443a;
+    --on-accent: #1b1411;
+    --shadow: none;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 15px/1.5 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+
+  /* ---------- topo ---------- */
+  header.topo { padding: 44px 16px 20px; text-align: center; }
+  header.topo { position: relative; }
+  .voltar { position: absolute; left: 16px; top: 14px; color: var(--ink-soft); text-decoration: none; font-size: 13.5px; padding: 6px 0; }
+  .voltar:hover { color: var(--accent); }
+  .marca-logo { width: 84px; height: 84px; border-radius: 50%; display: block; margin: 0 auto 12px; box-shadow: 0 0 0 3px var(--surface), 0 0 0 4px var(--line); }
+  .marca {
+    font: 600 44px/1 Oswald, Impact, sans-serif;
+    letter-spacing: .02em; text-transform: uppercase; margin: 0;
+  }
+  .marca-sub {
+    font: 500 15px/1.4 "Playfair Display", Georgia, serif;
+    color: var(--ink-soft); margin: 8px 0 0; letter-spacing: .04em;
+  }
+  .regua { height: 1px; background: var(--ink); opacity: .7; margin: 22px auto 0; width: 100%; position: relative; }
+  .regua::before, .regua::after {
+    content: ""; position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--ink);
+  }
+  .regua::before { left: 0; } .regua::after { right: 0; }
+
+  /* ---------- barra fixa: busca + seções ---------- */
+  .barra {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .barra .wrap { padding-top: 10px; padding-bottom: 10px; }
+  .busca-linha { display: flex; gap: 8px; align-items: center; }
+  .busca {
+    flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+    padding: 0 14px; height: 42px;
+  }
+  .busca svg { width: 18px; height: 18px; color: var(--ink-faint); flex: none; }
+  .busca input {
+    flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink);
+    font: inherit; font-size: 16px; /* evita zoom no iPhone */
+  }
+  .busca input::placeholder { color: var(--ink-faint); }
+  .busca:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .limpar { border: 0; background: none; color: var(--ink-faint); font-size: 20px; line-height: 1; padding: 4px; cursor: pointer; display: none; }
+  .busca.tem-texto .limpar { display: block; }
+  .tema {
+    flex: none; width: 42px; height: 42px; border-radius: 50%;
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+    display: grid; place-items: center; cursor: pointer;
+  }
+  .tema svg { width: 18px; height: 18px; }
+
+  nav.secoes {
+    display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+    margin: 10px -16px 0; padding: 0 16px;
+    position: relative;
+  }
+  nav.secoes::-webkit-scrollbar { display: none; }
+  nav.secoes a {
+    flex: none;
+    text-decoration: none; color: var(--ink-soft);
+    font: 500 13px/1 Inter, sans-serif; letter-spacing: .01em;
+    padding: 9px 14px; border-radius: 999px; background: var(--chip-bg);
+    transition: background .15s, color .15s;
+  }
+  nav.secoes a[aria-current="true"] { background: var(--ink); color: var(--bg); }
+
+  /* ---------- seções ---------- */
+  main { padding-bottom: 64px; }
+  section.secao { padding-top: 34px; scroll-margin-top: 112px; }
+  .secao-titulo {
+    font: 600 34px/1.05 Oswald, Impact, sans-serif; text-transform: uppercase;
+    letter-spacing: .015em; margin: 0 0 4px;
+  }
+  .secao-sub { color: var(--ink-faint); font-size: 13px; margin: 0 0 6px; }
+
+  .grupo {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: var(--shadow); padding: 18px 18px 6px; margin-top: 16px;
+  }
+  .grupo-titulo {
+    font: 700 13px/1.2 "Playfair Display", Georgia, serif;
+    text-transform: uppercase; letter-spacing: .14em; color: var(--accent);
+    margin: 0 0 4px;
+  }
+  .grupo-nota { color: var(--ink-faint); font-size: 12.5px; margin: 0 0 4px; }
+
+  ul.itens { list-style: none; margin: 0; padding: 0; }
+  li.item { padding: 12px 0; border-top: 1px dashed var(--line); }
+  li.item:first-child { border-top: 0; }
+  .item-linha { display: flex; align-items: baseline; gap: 8px; }
+  .item-nome { font: 600 17px/1.3 "Playfair Display", Georgia, serif; }
+  .pontilhado { flex: 1; min-width: 16px; border-bottom: 1.5px dotted var(--leader); transform: translateY(-4px); }
+  .preco { font: 600 15px/1.3 Inter, sans-serif; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .preco small { font-weight: 400; color: var(--ink-faint); font-size: 12px; margin-left: 3px; }
+  .item-desc { color: var(--ink-soft); font-size: 13.5px; margin: 3px 0 0; max-width: 56ch; }
+
+  .opcoes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .opcao {
+    display: inline-flex; align-items: baseline; gap: 8px;
+    background: var(--chip-bg); border-radius: 8px; padding: 6px 10px; font-size: 13.5px;
+  }
+  .opcao span:first-child { color: var(--ink-soft); }
+  .opcao b { font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* ---------- fotos ---------- */
+  li.item.com-foto { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: start; }
+  .foto {
+    flex: none; width: 84px; height: 84px; padding: 0; border: 0; border-radius: 12px; overflow: hidden;
+    background: var(--chip-bg); cursor: default; display: block;
+    box-shadow: 0 0 0 1px var(--line);
+  }
+  .foto img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s ease; }
+  .foto.ampliavel { cursor: zoom-in; }
+  .foto.ampliavel:hover img { transform: scale(1.05); }
+  .foto:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .grupo-topo { display: flex; align-items: center; gap: 14px; margin-bottom: 4px; }
+  .grupo-topo .grupo-titulo { flex: 1; margin: 0; }
+  .grupo-topo .foto { width: 72px; height: 72px; }
+
+  dialog.zoom {
+    border: 0; padding: 0; background: transparent; max-width: none; max-height: none;
+    width: 100%; height: 100%; display: none; place-items: center;
+  }
+  dialog.zoom[open] { display: grid; }
+  dialog.zoom::backdrop { background: rgba(20, 12, 8, .82); }
+  .zoom figure { margin: 0; text-align: center; padding: 16px; }
+  .zoom img {
+    display: block; margin: 0 auto; border-radius: 14px; background: var(--chip-bg);
+    width: min(88vw, 420px); max-height: 72vh; object-fit: cover;
+  }
+  .zoom figcaption { color: #f5ebe1; font: 600 18px/1.3 "Playfair Display", Georgia, serif; margin-top: 12px; }
+  .zoom .fechar {
+    position: fixed; top: max(14px, env(safe-area-inset-top)); right: 14px; width: 44px; height: 44px; border-radius: 50%;
+    border: 0; background: rgba(255,255,255,.14); color: #fff; font-size: 26px; line-height: 1; cursor: pointer;
+  }
+
+  mark { background: color-mix(in srgb, #f2c94c 45%, transparent); color: inherit; border-radius: 3px; padding: 0 1px; }
+
+  .vazio { text-align: center; color: var(--ink-soft); padding: 56px 0 24px; display: none; }
+  .vazio strong { display: block; font: 600 20px/1.3 "Playfair Display", Georgia, serif; color: var(--ink); margin-bottom: 4px; }
+
+  footer { text-align: center; color: var(--ink-faint); font-size: 12.5px; padding: 8px 0 40px; }
+
+  [hidden] { display: none !important; }
+
+  @media (min-width: 640px) {
+    .marca { font-size: 56px; }
+    .secao-titulo { font-size: 40px; }
+    .grupos { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; align-items: start; }
+    .grupo.largo { grid-column: 1 / -1; }
+  }
+</style>
+<link rel="stylesheet" href="pedido.css">
+</head>
+<body>
+
+<header class="topo wrap">
+  <a class="voltar" href="../">← Sr. John</a>
+  <img class="marca-logo" src="../img/logo.png" alt="" width="84" height="84">
+  <h1 class="marca">Cardápio</h1>
+  <p class="marca-sub">Sr. John · Chocolates &amp; Café</p>
+  <div class="regua" aria-hidden="true"></div>
+</header>
+
+<div class="barra">
+  <div class="wrap">
+    <div class="busca-linha">
+      <label class="busca" id="busca">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="text" inputmode="search" enterkeyhint="search" placeholder="Buscar no cardápio" autocomplete="off" aria-label="Buscar no cardápio">
+        <button class="limpar" type="button" id="limpar" aria-label="Limpar busca">×</button>
+      </label>
+      <button class="tema" type="button" id="tema" aria-label="Mudar tema claro/escuro" title="Tema claro/escuro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+    <nav class="secoes" id="nav" aria-label="Seções do cardápio"></nav>
+  </div>
+</div>
+
+<main class="wrap" id="conteudo"></main>
+<div class="wrap vazio" id="vazio"><strong>Nada encontrado</strong>Tente outra palavra, como “café”, “frango” ou “morango”.</div>
+
+<dialog class="zoom" id="zoom" aria-label="Foto ampliada"><button class="fechar" type="button" aria-label="Fechar">×</button><figure><img alt=""><figcaption></figcaption></figure></dialog>
+
+<footer class="wrap"><a href="../" style="color:inherit">Sr. John Chocolates &amp; Café</a> · Rua Francisco Marcolino Junqueira, 559 · Morro Agudo/SP</footer>
+
+<script>
+/* =====================================================================
+   CARDÁPIO — para mudar um preço, nome ou descrição, edite só aqui.
+   p: preço em reais (use ponto: 12.9 = R$ 12,90)
+   d: descrição (opcional)
+   opcoes: tamanhos/variações com preço próprio (opcional)
+   cada: true → mostra "cada" ao lado do preço
+   f: nome da foto em img/fotos/ (sem .jpg), no item ou no grupo
+   PEDIDO:
+   px (no grupo): prefixo do nome no pedido (ex.: 'Crepioca' → "Crepioca · Frango com requeijão")
+   np: nome do item no pedido, no lugar do nome do cardápio
+   escolha: { t: 'Sabor', o: [...] } → o cliente tem que escolher uma
+   pergunta: 'Quais 2 queijos?' → o cliente tem que responder
+   ===================================================================== */
+const CARDAPIO = [
+  {
+    id: 'cafes', titulo: 'Cafés',
+    grupos: [
+      { nome: 'Grãos moídos', itens: [
+        { n: 'Café coado', f: 'cafe-coado', p: 11.9, d: 'Café em grãos, doce e frutado, com notas de chocolate e acidez delicada, torra média, coado individualmente no coador de pano. Não contém açúcar.' },
+        { n: 'Café Filtrado V60', p: 12.9, d: 'Café em grãos, corpo leve e delicado, sabor marcante e textura aveludada. Coado com a técnica japonesa Hario V60. Não contém açúcar.' },
+        { n: 'Café Dark Roast', p: 12.9, d: 'Café gourmet com notas de chocolate amargo, torra média. Não contém açúcar.' },
+      ]},
+      { nome: 'Café expresso', itens: [
+        { n: 'Expresso', f: 'expresso', opcoes: [['Curto', 7.9], ['Longo', 8.9]] },
+        { n: 'Expresso descafeinado', opcoes: [['Curto', 7.9], ['Longo', 8.9]] },
+        { n: 'Expresso especial com chocolate ao leite', p: 20.9, d: 'Café expresso, chocolate ao leite e chantilly.' },
+      ]},
+      { nome: 'Café com leite', largo: true, itens: [
+        { n: 'Macchiato', p: 9.9, d: 'Café expresso com uma pequena quantidade de leite espumado. Não contém açúcar.' },
+        { n: 'Latte', f: 'latte', p: 9.9, d: 'Café expresso com leite vaporizado e uma generosa camada de espuma. Não contém açúcar.' },
+        { n: 'Mocca Caramelo', p: 16.9, d: 'Café expresso, leite espumado e calda de caramelo.' },
+        { n: 'Mocca Chocolate', p: 16.9, d: 'Café expresso, leite espumado e calda de chocolate.' },
+      ]},
+    ],
+  },
+  {
+    id: 'quentes', titulo: 'Bebidas quentes',
+    grupos: [
+      { nome: 'Cappuccinos sem açúcar', px: 'Cappuccino', itens: [
+        { n: 'Italiano', d: 'Café expresso com leite vaporizado. Não contém açúcar.', opcoes: [['100 ml', 10.9], ['200 ml', 13.9]] },
+        { n: 'Descafeinado', f: 'cappuccino-descafeinado', d: 'Deliciosa mistura descafeinada, leite cremoso e chantilly.', opcoes: [['100 ml', 12.9], ['200 ml', 15.9]] },
+      ]},
+      { nome: 'Cappuccinos com açúcar', px: 'Cappuccino', itens: [
+        { n: 'Da casa', f: 'cappuccino', d: 'Deliciosa receita da casa, leite cremoso e chantilly. Contém açúcar e cacau em pó 50%.', opcoes: [['100 ml', 15.9], ['200 ml', 17.9]] },
+        { n: 'Trufado', d: 'Café expresso com leite vaporizado e gotas de chocolate ao leite.', opcoes: [['100 ml', 18.9], ['200 ml', 20.9]] },
+        { n: 'Cappuccino Ovomaltine', d: 'Deliciosa receita da casa, leite cremoso, borda de Nutella, flocos de Ovomaltine e chantilly. Contém açúcar.', opcoes: [['100 ml', 25.9], ['200 ml', 27.9]] },
+      ]},
+      { nome: 'Chocolate quente', largo: true, itens: [
+        { n: 'Chocolate quente cremoso', f: 'chocolate-quente', d: 'Leite cremoso e uma deliciosa mistura de chocolates.', opcoes: [['100 ml', 13.9], ['200 ml', 18.9]] },
+      ]},
+    ],
+  },
+  {
+    id: 'geladas', titulo: 'Bebidas geladas',
+    grupos: [
+      { nome: 'Chás gelados', itens: [
+        { n: 'Chá Hibisco', p: 15.5, d: 'Chá com cubos de gelo e morango.' },
+        { n: 'Chá Gengibre', f: 'cha-gelado', p: 15.5, d: 'Chá com cubos de gelo e rodelas de limão.' },
+      ]},
+      { nome: 'Vitaminas de frutas', px: 'Vitamina', itens: [
+        { n: 'Coco', p: 20.9, d: 'Leite integral, leite em pó, leite condensado, coco e gelo.' },
+        { n: 'Morango', p: 20.9, d: 'Leite integral, leite em pó, leite condensado, morango e gelo.' },
+        { n: 'Maracujá', p: 20.9, d: 'Leite integral, leite em pó, leite condensado, maracujá e gelo.' },
+        { n: '2 sabores', pergunta: 'Quais 2 frutas?', p: 23.9, d: 'Leite integral, leite em pó, leite condensado, frutas à sua escolha e gelo.' },
+      ]},
+      { nome: 'Frapuccinos', largo: true, itens: [
+        { n: 'Chocolate cremoso gelado', p: 19.9, d: 'Leite, mistura de chocolates e chantilly.' },
+        { n: 'Frapuccino Chocolate', p: 25.9, d: 'Leite em pó, leite integral, café solúvel, cacau em pó 50%, sorvete, gelo, calda de chocolate e chantilly.' },
+        { n: 'Frapuccino Nutella', p: 28.9, d: 'Leite em pó, leite integral, café solúvel, cacau em pó 50%, sorvete, Nutella, gelo, calda de chocolate e chantilly.' },
+        { n: 'Frapuccino Doce de Leite', p: 25.9, d: 'Leite em pó, leite integral, café solúvel, cacau em pó 50%, sorvete, doce de leite, gelo, calda de chocolate e chantilly.' },
+        { n: 'Frapuccino Ovomaltine', p: 35.9, d: 'Leite em pó, leite integral, café solúvel, cacau em pó 50%, sorvete, pasta de Ovomaltine, flocos de Ovomaltine, gelo, calda de chocolate e chantilly.' },
+        { n: 'Frapuccino Paçoca', p: 25.9, d: 'Leite em pó, leite integral, café solúvel, cacau em pó 50%, sorvete, doce de leite, paçoca, gelo, calda de chocolate e chantilly.' },
+      ]},
+      { nome: 'Sucos de frutas', px: 'Suco', itens: [
+        { n: 'Laranja ou Limão', np: 'Suco', escolha: { t: 'Sabor', o: ['Laranja', 'Limão'] }, p: 12.9, cada: true },
+        { n: 'Limonada Suíça, Morango, Maracujá ou Abacaxi com Hortelã', np: 'Suco', escolha: { t: 'Sabor', o: ['Limonada Suíça', 'Morango', 'Maracujá', 'Abacaxi com Hortelã'] }, p: 15.9, cada: true },
+        { n: 'Frutas Vermelhas', p: 18.9 },
+        { n: '2 sabores', pergunta: 'Quais 2 sabores?', p: 19.9 },
+      ]},
+      { nome: 'Refrigerantes e águas', itens: [
+        { n: 'Refrigerantes', np: 'Refrigerante', escolha: { t: 'Sabor', o: ['Coca-Cola', 'Coca-Cola Zero', 'Guaraná', 'Fanta Laranja', 'Sprite'] }, f: 'refrigerantes', p: 7.9, cada: true, d: 'Coca-Cola, Coca-Cola Zero, Guaraná, Fanta Laranja ou Sprite.' },
+        { n: 'H2OH! ou H2OH! Limoneto', np: 'H2OH!', escolha: { t: 'Sabor', o: ['Tradicional', 'Limoneto'] }, p: 8.9, cada: true },
+        { n: 'Água sem gás', p: 4.5 },
+        { n: 'Água com gás', p: 5.5 },
+      ]},
+    ],
+  },
+  {
+    id: 'salgados', titulo: 'Para todas as horas', sub: 'Pães de queijo, pães na chapa, crepiocas, tapiocas e panquecas',
+    grupos: [
+      { nome: 'Pães de queijo', px: 'Pão de queijo', itens: [
+        { n: 'Pão de queijo', f: 'paes-de-queijo', opcoes: [['Tradicional pequeno', 2.5], ['4 queijos', 3.5], ['Tradicional grande', 4.5]] },
+        { n: 'Recheado de presunto e mussarela', opcoes: [['Tradicional pequeno', 4.5], ['4 queijos', 5.9], ['Tradicional grande', 8.5]] },
+        { n: 'Recheado de frango e requeijão', opcoes: [['Tradicional pequeno', 7.9], ['4 queijos', 8.9], ['Tradicional grande', 10.9]] },
+      ]},
+      { nome: 'Pães na chapa', f: 'pao-na-chapa', itens: [
+        { n: 'Pão com manteiga', p: 8.9 },
+        { n: 'Pão na chapa com manteiga', p: 9.9 },
+        { n: 'Pão na chapa com requeijão', p: 15.9 },
+        { n: 'Pão na chapa com Nutella', p: 18.9 },
+        { n: 'Queijo quente', pergunta: 'Quais 2 queijos?', p: 19.9, d: 'Escolha 2 opções de queijo.' },
+        { n: 'Misto quente', p: 14.9, d: 'Presunto e mussarela.' },
+        { n: 'Bauru', p: 16.9, d: 'Presunto, mussarela e tomate.' },
+        { n: 'Pão com ovo frito', p: 12.5 },
+        { n: 'Pão com ovo mexido', p: 16.9, d: '2 ovos.' },
+        { n: 'Ovo frito', p: 5.2 },
+        { n: 'Ovo mexido', p: 9.9, d: '2 unidades.' },
+      ]},
+      { nome: 'Crepioca', px: 'Crepioca', f: 'crepioca', itens: [
+        { n: 'Frango com requeijão', p: 22.9 },
+        { n: 'Presunto e mussarela', p: 22.9 },
+        { n: '2 queijos', pergunta: 'Quais 2 queijos?', p: 19.9, d: 'Escolha 2 opções de queijo.' },
+      ]},
+      { nome: 'Tapioca', px: 'Tapioca', itens: [
+        { n: 'Frango com requeijão', p: 25.9 },
+        { n: 'Presunto e mussarela', p: 22.9 },
+        { n: '2 queijos', pergunta: 'Quais 2 queijos?', p: 22.9, d: 'Escolha 2 opções de queijo.' },
+      ]},
+      { nome: 'Panqueca', px: 'Panqueca', largo: true, itens: [
+        { n: 'Frango com requeijão', p: 20.9 },
+        { n: 'Presunto e mussarela', p: 16.9 },
+        { n: '2 queijos', pergunta: 'Quais 2 queijos?', p: 16.9, d: 'Escolha 2 opções de queijo.' },
+      ]},
+    ],
+  },
+  {
+    id: 'lanches', titulo: 'Lanches e tortas', sub: 'Tortas, empadas, croissants, lanches naturais e omeletes',
+    grupos: [
+      { nome: 'Tortas', px: 'Torta', f: 'torta', itens: [
+        { n: 'Frango com requeijão', p: 22.9 },
+        { n: 'Presunto e mussarela', p: 18.9 },
+        { n: 'Palmito', p: 18.9 },
+        { n: 'Calabresa', p: 18.9 },
+      ]},
+      { nome: 'Empadas', itens: [
+        { n: 'Empada', escolha: { t: 'Sabor', o: ['Frango com requeijão', 'Palmito', 'Frango com bacon'] }, f: 'empadas', p: 11.9, cada: true, d: 'Frango com requeijão, palmito ou frango com bacon.' },
+      ]},
+      { nome: 'Croissant salgado', px: 'Croissant', f: 'croissant', itens: [
+        { n: 'Frango com requeijão', p: 14.2 },
+        { n: '4 queijos', p: 14.2 },
+        { n: 'Presunto e mussarela', p: 14.2 },
+      ]},
+      { nome: 'Omeletes', px: 'Omelete', f: 'omelete', itens: [
+        { n: 'Tradicional', p: 15.9, d: '2 ovos, tomate, sal, ervas finas e pimenta calabresa.' },
+        { n: 'Presunto e mussarela', p: 18.9, d: '2 ovos, presunto e mussarela, tomate, sal, ervas finas e pimenta calabresa.' },
+        { n: '2 queijos', p: 17.9, d: '2 ovos, queijo prato e mussarela, tomate, sal, ervas finas e pimenta calabresa.' },
+      ]},
+      { nome: 'Lanche natural', px: 'Lanche natural', largo: true, itens: [
+        { n: 'Frango cremoso', escolha: { t: 'Pão', o: ['Pão francês', 'Pão de forma'] }, p: 16.9, d: 'Pão francês ou pão de forma, frango desfiado, tomate, alface e maionese.' },
+        { n: 'Presunto e mussarela', escolha: { t: 'Pão', o: ['Pão francês', 'Pão de forma'] }, p: 15.9, d: 'Pão francês ou pão de forma, presunto, mussarela, tomate, alface e maionese.' },
+        { n: 'Sr. John', escolha: { t: 'Pão', o: ['Pão francês', 'Pão de forma'] }, p: 19.9, d: 'Pão francês ou pão de forma, queijo branco frescal, peito de peru, rúcula, tomate e maionese.' },
+      ]},
+    ],
+  },
+  {
+    id: 'sobremesas', titulo: 'Sobremesas',
+    grupos: [
+      { nome: 'Brownie', f: 'brownie', itens: [
+        { n: 'Brownie pedaço', p: 10.9 },
+        { n: 'Brownie com sorvete', p: 19.9 },
+        { n: 'Brownie trufado com Nutella e morango', p: 33.9 },
+      ]},
+      { nome: 'Affogato', itens: [
+        { n: 'Affogato', f: 'affogato', p: 12.9, d: 'Sorvete de creme com café expresso.' },
+        { n: 'Affogato trufado de Nutella', p: 16.9, d: 'Sorvete de creme com café expresso, trufado com Nutella.' },
+      ]},
+      { nome: 'Tapioca doce', px: 'Tapioca doce', itens: [
+        { n: 'Nutella', p: 20.9 },
+        { n: 'Nutella com morango', p: 25.5 },
+        { n: 'Doce de leite', p: 16.9 },
+        { n: 'Doce de leite com paçoca', p: 18.9 },
+        { n: 'Leite condensado com morango', p: 20.9 },
+      ]},
+      { nome: 'Panqueca doce', px: 'Panqueca doce', itens: [
+        { n: 'Nutella', p: 20.9 },
+        { n: 'Nutella com morango', p: 25.9 },
+        { n: 'Doce de leite', p: 12.9 },
+        { n: 'Doce de leite com paçoca', p: 18.9 },
+      ]},
+      { nome: 'Croissant doce', px: 'Croissant', f: 'croissant-doce', itens: [
+        { n: 'Nutella', p: 17.9 },
+        { n: 'Doce de leite', p: 14.9 },
+        { n: 'Doce de leite com paçoca', p: 16.9 },
+        { n: 'Ovomaltine', p: 20.9 },
+      ]},
+      { nome: 'Sobremesas especiais', itens: [
+        { n: 'Petit Gâteau', f: 'petit-gateau', p: 22.9, d: 'Chocolate quente por dentro, servido com calda e uma bola de sorvete.' },
+      ]},
+    ],
+  },
+];
+
+// cada item ganha um id fixo (seção-grupo-posição) para o pedido
+CARDAPIO.forEach((s) => s.grupos.forEach((g, gi) => g.itens.forEach((it, ii) => { it.id = `${s.id}-${gi}-${ii}`; })));
+
+/* ---------------------------------------------------------------- render */
+const real = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+const sem = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+// destaca o termo buscado ignorando acentos/maiúsculas
+function marcar(texto, termo) {
+  if (!termo) return esc(texto);
+  const base = sem(texto);
+  let out = '', i = 0, j;
+  while ((j = base.indexOf(termo, i)) !== -1) {
+    out += esc(texto.slice(i, j)) + '<mark>' + esc(texto.slice(j, j + termo.length)) + '</mark>';
+    i = j + termo.length;
+  }
+  return out + esc(texto.slice(i));
+}
+
+const FOTOS = '../img/fotos/';
+function fotoHTML(f, legenda) {
+  return `<button class="foto" type="button" data-foto="${esc(f)}" data-legenda="${esc(legenda)}" aria-label="Ver foto: ${esc(legenda)}">
+    <img src="${FOTOS}${esc(f)}.jpg" alt="${esc(legenda)}" loading="lazy" width="84" height="84" onload="if (this.naturalWidth >= 400) this.parentNode.classList.add('ampliavel')" onerror="this.parentNode.remove()">
+  </button>`;
+}
+
+function itemHTML(it, termo) {
+  const preco = it.p != null
+    ? `<span class="pontilhado" aria-hidden="true"></span><span class="preco">${real(it.p)}${it.cada ? '<small>cada</small>' : ''}</span>
+       <button class="add" type="button" data-add="${it.id}" aria-label="Adicionar ${esc(it.n)} ao pedido"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>`
+    : '';
+  const opcoes = it.opcoes
+    ? `<div class="opcoes">${it.opcoes.map(([o, v], i) => `<button class="opcao" type="button" data-add="${it.id}" data-op="${i}" aria-label="Adicionar ${esc(it.n)} ${esc(o)} ao pedido"><span>${marcar(o, termo)}</span><b>${real(v)}</b></button>`).join('')}</div>`
+    : '';
+  const corpo = `<div class="item-linha"><span class="item-nome">${marcar(it.n, termo)}</span>${preco}</div>
+    ${it.d ? `<p class="item-desc">${marcar(it.d, termo)}</p>` : ''}
+    ${opcoes}`;
+  if (!it.f) return `<li class="item">${corpo}</li>`;
+  return `<li class="item com-foto"><div>${corpo}</div>${fotoHTML(it.f, it.n)}</li>`;
+}
+
+const nav = document.getElementById('nav');
+const main = document.getElementById('conteudo');
+const vazio = document.getElementById('vazio');
+
+nav.innerHTML = CARDAPIO.map((s) => `<a href="#${s.id}">${esc(s.titulo)}</a>`).join('');
+
+function render(termoBruto = '') {
+  const termo = sem(termoBruto.trim());
+  let total = 0;
+  main.innerHTML = CARDAPIO.map((s) => {
+    const grupos = s.grupos.map((g) => {
+      const grupoBate = termo && sem(g.nome).includes(termo);
+      const itens = g.itens.filter((it) => !termo || grupoBate ||
+        sem([it.n, it.d || '', ...(it.opcoes || []).map((o) => o[0]), ...(it.escolha ? it.escolha.o : [])].join(' ')).includes(termo));
+      total += itens.length;
+      if (!itens.length) return '';
+      return `<div class="grupo${g.largo ? ' largo' : ''}">
+        ${g.f
+          ? `<div class="grupo-topo"><h3 class="grupo-titulo">${marcar(g.nome, termo)}</h3>${fotoHTML(g.f, g.nome)}</div>`
+          : `<h3 class="grupo-titulo">${marcar(g.nome, termo)}</h3>`}
+        <ul class="itens">${itens.map((it) => itemHTML(it, termo)).join('')}</ul>
+      </div>`;
+    }).join('');
+    if (!grupos) return '';
+    return `<section class="secao" id="${s.id}" aria-labelledby="t-${s.id}">
+      <h2 class="secao-titulo" id="t-${s.id}">${esc(s.titulo)}</h2>
+      ${s.sub ? `<p class="secao-sub">${esc(s.sub)}</p>` : ''}
+      <div class="grupos">${grupos}</div>
+    </section>`;
+  }).join('');
+  vazio.style.display = total ? 'none' : 'block';
+  nav.querySelectorAll('a').forEach((a) => { a.hidden = !document.getElementById(a.hash.slice(1)); });
+  ativaAtual = null; observar();
+  if (window.atualizarSelos) atualizarSelos();
+}
+
+/* ------------------------------------------------- seção ativa no menu */
+// ativa = última seção cujo título já passou por baixo da barra fixa
+let ativaAtual = null;
+function observar() {
+  const barra = document.querySelector('.barra').getBoundingClientRect().bottom;
+  const secoes = [...main.querySelectorAll('section.secao')];
+  let atual = secoes[0] && secoes[0].id;
+  for (const s of secoes) if (s.getBoundingClientRect().top <= barra + 24) atual = s.id;
+  if (atual === ativaAtual) return;
+  ativaAtual = atual;
+  nav.querySelectorAll('a').forEach((a) => {
+    const ativo = a.hash === '#' + atual;
+    a.setAttribute('aria-current', ativo);
+    if (ativo) nav.scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' });
+  });
+}
+let raf;
+addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(observar); }, { passive: true });
+addEventListener('resize', observar);
+
+/* ---------------------------------------------------------------- busca */
+const q = document.getElementById('q');
+const busca = document.getElementById('busca');
+let t;
+q.addEventListener('input', () => {
+  busca.classList.toggle('tem-texto', !!q.value);
+  clearTimeout(t);
+  t = setTimeout(() => {
+    render(q.value);
+    // volta para o começo dos resultados se a pessoa já tinha rolado a página
+    const topo = main.getBoundingClientRect().top + scrollY - document.querySelector('.barra').offsetHeight;
+    if (scrollY > topo) scrollTo({ top: topo, behavior: 'instant' });
+    requestAnimationFrame(() => { ativaAtual = null; observar(); });
+  }, 120);
+});
+document.getElementById('limpar').addEventListener('click', () => {
+  q.value = ''; busca.classList.remove('tem-texto'); render(); q.focus();
+});
+
+/* ---------------------------------------------------------------- tema */
+const raiz = document.documentElement;
+try { const salvo = localStorage.getItem('tema-cardapio'); if (salvo) raiz.dataset.theme = salvo; } catch (e) {}
+document.getElementById('tema').addEventListener('click', () => {
+  const escuroAgora = raiz.dataset.theme
+    ? raiz.dataset.theme === 'dark'
+    : matchMedia('(prefers-color-scheme: dark)').matches;
+  raiz.dataset.theme = escuroAgora ? 'light' : 'dark';
+  try { localStorage.setItem('tema-cardapio', raiz.dataset.theme); } catch (e) {}
+});
+
+/* ---------------------------------------------------------------- foto ampliada */
+const zoom = document.getElementById('zoom');
+main.addEventListener('click', (e) => {
+  // só amplia foto com resolução boa (as provisórias do Canva são pequenas)
+  const b = e.target.closest('.foto.ampliavel');
+  if (!b) return;
+  zoom.querySelector('img').src = FOTOS + b.dataset.foto + '.jpg';
+  zoom.querySelector('img').alt = b.dataset.legenda;
+  zoom.querySelector('figcaption').textContent = b.dataset.legenda;
+  zoom.showModal();
+});
+zoom.addEventListener('click', (e) => { if (!e.target.closest('img')) zoom.close(); });
+
+render();
+</script>
+<script src="../js/config.js"></script>
+<script src="../js/vendor/qrcode-generator.js"></script>
+<script src="../js/pix.js"></script>
+<script src="pedido.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+// Cloudflare Workers — configuração do site do Sr. John
+// (o "name" tem que ser igual ao nome do projeto criado no Cloudflare)
+{
+  "name": "srjohn",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    // só a pasta public/ vai para o ar (docs/ e testes/ ficam de fora)
+    "directory": "./public"
+  }
+}

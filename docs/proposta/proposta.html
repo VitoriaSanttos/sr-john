@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Proposta comercial · Sr. John Chocolates & Café</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Oswald:wght@500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --bg: #f6efe7; --card: #fffaf4; --ink: #2f221d; --soft: #6e5c52; --faint: #9b887b;
+    --line: #e4d5c5; --brand: #a9533f; --brand-soft: #f3e2d8; --navy: #22324c; --ok: #2e7d4f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font: 400 10.5pt/1.5 Inter, system-ui, sans-serif; color: var(--ink); background: #ddd; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .pagina {
+    width: 210mm; height: 297mm; position: relative; overflow: hidden;
+    background: var(--card); padding: 18mm 18mm 16mm; page-break-after: always; break-after: page;
+    margin: 0 auto;
+  }
+  .pagina:last-child { page-break-after: auto; break-after: auto; }
+  @media screen { .pagina { margin: 10mm auto; box-shadow: 0 4px 20px rgba(0,0,0,.15); } }
+
+  .rodape {
+    position: absolute; left: 18mm; right: 18mm; bottom: 9mm; display: flex; justify-content: space-between;
+    font-size: 8pt; color: var(--faint); border-top: 1px solid var(--line); padding-top: 3mm;
+  }
+  .eyebrow { font: 600 8pt/1 "Josefin Sans", sans-serif; letter-spacing: .28em; text-transform: uppercase; color: var(--brand); }
+  h1 { font: 600 34pt/1.02 Oswald, Impact, sans-serif; text-transform: uppercase; margin: 3mm 0 0; letter-spacing: .01em; }
+  h2 { font: 600 24pt/1.05 Oswald, Impact, sans-serif; text-transform: uppercase; margin: 2.5mm 0 1mm; }
+  h3 { font: 600 13pt/1.25 "Playfair Display", Georgia, serif; margin: 0 0 1.5mm; }
+  p { margin: 0 0 3mm; }
+  .lead { font: italic 500 13pt/1.45 "Playfair Display", Georgia, serif; color: var(--soft); }
+  .soft { color: var(--soft); }
+
+  /* ---------- capa ---------- */
+  .capa { background: var(--bg); padding: 0; display: grid; grid-template-rows: auto 1fr auto; }
+  .capa-topo { padding: 20mm 18mm 0; }
+  .capa-logo { width: 30mm; height: 30mm; border-radius: 50%; box-shadow: 0 0 0 2mm var(--card); }
+  .capa h1 { font-size: 40pt; margin-top: 9mm; }
+  .capa .lead { font-size: 15pt; margin-top: 4mm; max-width: 130mm; }
+  .capa-fones { display: flex; justify-content: center; align-items: flex-end; gap: 7mm; padding: 4mm 0 0; }
+  .capa-fones .fone:nth-child(2) { transform: translateY(-10mm); }
+  .capa-base {
+    background: var(--ink); color: var(--card); padding: 9mm 18mm; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6mm;
+  }
+  .capa-base small { display: block; font: 600 7.5pt/1 "Josefin Sans", sans-serif; letter-spacing: .22em; text-transform: uppercase; color: #d9b9a5; margin-bottom: 2mm; }
+  .capa-base b { font: 600 11.5pt/1.3 Inter, sans-serif; }
+
+  /* ---------- telefones ---------- */
+  .fone {
+    width: 52mm; border-radius: 8mm; padding: 1.8mm; background: #1f1714; flex: none;
+    box-shadow: 0 3mm 8mm rgba(47, 34, 29, .22);
+  }
+  .fone img { display: block; width: 100%; border-radius: 6.4mm; }
+  .fone.g { width: 60mm; }
+  .tela { display: flex; flex-direction: column; align-items: center; gap: 3.5mm; }
+  .tela figcaption { text-align: center; max-width: 54mm; }
+  .tela figcaption b { display: block; font: 600 10.5pt/1.3 "Playfair Display", Georgia, serif; }
+  .tela figcaption span { font-size: 8.8pt; color: var(--soft); }
+  .num {
+    display: inline-grid; place-items: center; width: 6mm; height: 6mm; border-radius: 50%;
+    background: var(--brand); color: #fff; font: 700 8pt/1 Inter, sans-serif; margin-right: 1.5mm; vertical-align: 1px;
+  }
+  .tela figcaption .num { color: #fff; font-size: 8pt; display: inline-grid; }
+  .telas { display: flex; justify-content: space-between; margin-top: 12mm; }
+  .telas .fone { width: 55mm; }
+  .telas .tela figcaption { max-width: 56mm; }
+  .fluxo { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 4mm; margin-top: 10mm; }
+  .fluxo .etapa { background: #fff; border: 1px solid var(--line); border-radius: 5mm; padding: 5mm; text-align: center; }
+  .fluxo .etapa b { display: block; font: 600 11pt/1.3 "Playfair Display", Georgia, serif; margin: 2mm 0 1mm; }
+  .fluxo .etapa span { font-size: 9pt; color: var(--soft); }
+  .fluxo .ic { font-size: 18pt; }
+  .fluxo .seta { color: var(--brand); font-size: 16pt; align-self: center; }
+  figure { margin: 0; }
+
+  /* ---------- hoje x novo ---------- */
+  .comparar { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin-top: 8mm; }
+  .bloco { border-radius: 5mm; padding: 6mm 6mm 4mm; }
+  .bloco.hoje { background: #f1ebe4; border: 1px solid var(--line); }
+  .bloco.novo { background: var(--brand-soft); border: 1px solid #e7c4b4; }
+  .bloco h3 { display: flex; align-items: center; gap: 2mm; }
+  ul.lista { list-style: none; padding: 0; margin: 3mm 0 0; }
+  ul.lista li { position: relative; padding-left: 6mm; margin-bottom: 2.6mm; }
+  ul.lista li::before { position: absolute; left: 0; top: 0; font-weight: 700; }
+  .hoje ul.lista li::before { content: "✕"; color: #a0897b; }
+  .novo ul.lista li::before, .plano ul.lista li::before { content: "✓"; color: var(--ok); }
+  .destaques { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; margin-top: 9mm; }
+  .destaque { background: var(--bg); border-radius: 5mm; padding: 6mm 5mm; text-align: center; }
+  .destaque .big { font: 600 22pt/1 Oswald, Impact, sans-serif; color: var(--brand); text-transform: uppercase; }
+  .destaque p { margin: 2.5mm 0 0; font-size: 9.3pt; color: var(--soft); }
+
+  /* ---------- whatsapp ---------- */
+  .duas { display: grid; grid-template-columns: auto 1fr; gap: 10mm; align-items: start; margin-top: 7mm; }
+  .chat { background: #efe7de; border-radius: 6mm; padding: 6mm; border: 1px solid var(--line); }
+  .chat-topo { display: flex; align-items: center; gap: 3mm; margin-bottom: 4mm; font-size: 9pt; color: var(--soft); }
+  .chat-topo .av { width: 9mm; height: 9mm; border-radius: 50%; background: var(--brand); color: #fff; display: grid; place-items: center; font-weight: 700; }
+  .balao {
+    background: #dff3d4; border-radius: 3.5mm 3.5mm 0.8mm 3.5mm; padding: 4mm 4.5mm; margin-left: 6mm;
+    font: 9.3pt/1.5 Inter, sans-serif; white-space: pre-wrap; box-shadow: 0 1px 1px rgba(0,0,0,.08);
+  }
+  .balao .h { color: #6b7d63; font-size: 8pt; text-align: right; margin-top: 1.5mm; }
+
+  .p5 { display: grid; grid-template-columns: 1fr 76mm; gap: 7mm; margin-top: 8mm; align-items: start; }
+  .p5-fones { display: flex; gap: 5mm; }
+  .p5-fones .fone { width: 44mm; }
+  .p5-fones figcaption { max-width: 46mm; }
+  .p5-chat { align-items: stretch; }
+  .p5-chat .balao { font-size: 8.6pt; margin-left: 3mm; }
+  .p5-chat figcaption { text-align: left; }
+
+  .demo-box { display: grid; grid-template-columns: 34mm 1fr; gap: 7mm; align-items: center; margin-top: 12mm;
+    background: var(--ink); color: var(--card); border-radius: 6mm; padding: 7mm; }
+  .demo-box .qr { background: #fff; border-radius: 3mm; padding: 2mm; }
+  .demo-box .qr svg { display: block; width: 100%; height: auto; }
+  .demo-box h3 { color: var(--card); font-size: 15pt; margin-bottom: 2mm; }
+  .demo-box p { color: #e3d2c6; margin: 0 0 2.5mm; font-size: 9.8pt; }
+  .demo-box .url { font: 600 9.5pt/1.3 Inter, sans-serif; color: #f3c9b7; word-break: break-all; }
+  .resumo { width: 100%; border-collapse: collapse; margin-top: 7mm; font-size: 10pt; }
+  .resumo th, .resumo td { padding: 3mm; border-bottom: 1px solid var(--line); text-align: left; }
+  .resumo th { font: 600 8pt/1.2 Inter, sans-serif; text-transform: uppercase; letter-spacing: .06em; color: var(--soft); }
+  .resumo td.v { font: 600 13pt/1 Oswald, Impact, sans-serif; white-space: nowrap; }
+  .resumo tr.rec td { background: var(--brand-soft); }
+
+  .oferta { border: 2px solid var(--brand); border-radius: 7mm; background: #fff; margin-top: 8mm; overflow: hidden;
+    box-shadow: 0 3mm 10mm rgba(169, 83, 63, .12); }
+  .oferta-topo { display: grid; grid-template-columns: 1fr auto auto; gap: 6mm; align-items: center; padding: 7mm 8mm; background: var(--brand-soft); }
+  .oferta-topo .nome { font: 600 8pt/1 "Josefin Sans", sans-serif; letter-spacing: .26em; text-transform: uppercase; color: var(--brand); }
+  .oferta-topo h3 { font-size: 16pt; margin: 2mm 0 0; }
+  .valor { text-align: center; padding: 0 2mm; }
+  .valor .n { font: 600 28pt/1 Oswald, Impact, sans-serif; }
+  .valor .n small { font: 500 11pt/1 Inter, sans-serif; color: var(--soft); }
+  .valor .l { font-size: 8.5pt; color: var(--soft); margin-top: 1.5mm; }
+  .valor + .valor { border-left: 1px solid #e7c4b4; padding-left: 6mm; }
+  .oferta-corpo { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; padding: 6mm 8mm 4mm; }
+  .oferta-corpo h4 { grid-column: 1 / -1; margin: 0 0 2mm; font: 600 8pt/1.2 Inter, sans-serif; text-transform: uppercase; letter-spacing: .08em; color: var(--soft); }
+  .oferta-corpo ul.lista { margin: 0; }
+  .oferta-corpo ul.lista li { font-size: 9.6pt; margin-bottom: 2.4mm; }
+  .oferta-corpo ul.lista li::before { content: "✓"; color: var(--ok); }
+
+  /* ---------- planos ---------- */
+  .planos { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin-top: 8mm; }
+  .plano { border: 1.5px solid var(--line); border-radius: 6mm; padding: 7mm 6mm 5mm; background: #fff; position: relative; }
+  .plano.rec { border-color: var(--brand); box-shadow: 0 3mm 10mm rgba(169, 83, 63, .14); }
+  .selo { position: absolute; top: -3.4mm; right: 6mm; background: var(--brand); color: #fff; font: 700 7.5pt/1 Inter, sans-serif; letter-spacing: .08em; text-transform: uppercase; padding: 2mm 3mm; border-radius: 2mm; }
+  .plano .nome { font: 600 8pt/1 "Josefin Sans", sans-serif; letter-spacing: .26em; text-transform: uppercase; color: var(--brand); }
+  .plano .preco { font: 600 30pt/1 Oswald, Impact, sans-serif; margin: 3mm 0 1mm; }
+  .plano .preco small { font: 500 11pt/1 Inter, sans-serif; color: var(--soft); }
+  .plano .para { font-size: 9.3pt; color: var(--soft); margin-bottom: 3mm; min-height: 11mm; }
+  .plano ul.lista li { font-size: 9.5pt; margin-bottom: 2mm; }
+  .plano .mais { font-weight: 600; margin: 3mm 0 1mm; font-size: 9.5pt; }
+
+  table.tab { width: 100%; border-collapse: collapse; margin-top: 7mm; font-size: 9.2pt; }
+  .tab th, .tab td { padding: 2.2mm 3mm; border-bottom: 1px solid var(--line); text-align: left; }
+  .tab th { font: 600 8pt/1.2 Inter, sans-serif; text-transform: uppercase; letter-spacing: .06em; color: var(--soft); }
+  .tab td.c, .tab th.c { text-align: center; width: 27mm; }
+  .tab .s { color: var(--ok); font-weight: 700; }
+  .tab .n { color: #c3b2a5; }
+  .tab th.rec { color: var(--brand); }
+
+  /* ---------- próximos passos ---------- */
+  .passos { counter-reset: p; display: grid; gap: 4mm; margin-top: 6mm; }
+  .passo { display: grid; grid-template-columns: 11mm 1fr; gap: 4mm; align-items: start; }
+  .passo::before {
+    counter-increment: p; content: counter(p); width: 11mm; height: 11mm; border-radius: 50%;
+    background: var(--brand); color: #fff; display: grid; place-items: center; font: 600 14pt/1 Oswald, sans-serif;
+  }
+  .passo b { display: block; font: 600 11pt/1.3 "Playfair Display", Georgia, serif; margin-top: 1.5mm; }
+  .passo span { color: var(--soft); font-size: 9.5pt; }
+  .grade2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin-top: 8mm; }
+  .caixa { background: var(--bg); border-radius: 5mm; padding: 6mm; }
+  .caixa ul { margin: 2mm 0 0; padding-left: 4.5mm; }
+  .caixa li { margin-bottom: 1.6mm; font-size: 9.4pt; }
+  .assina { margin-top: 10mm; display: flex; justify-content: space-between; align-items: flex-end; gap: 10mm; }
+  .assina .linha { flex: 1; border-top: 1px solid var(--ink); padding-top: 2mm; font-size: 8.5pt; color: var(--soft); text-align: center; }
+  .qr-img { width: 100%; border-radius: 4mm; border: 1px solid var(--line); display: block; }
+</style>
+</head>
+<body>
+
+<!-- ============================== 1. CAPA ============================== -->
+<section class="pagina capa">
+  <div class="capa-topo">
+    <img class="capa-logo" src="../../public/img/logo.png" alt="">
+    <h1>Proposta comercial</h1>
+    <p class="lead">Cardápio online, link da bio do Instagram e pedidos direto no WhatsApp para o Sr. John Chocolates &amp; Café.</p>
+  </div>
+  <div class="capa-fones">
+    <div class="fone"><img src="img/s1-bio.png" alt=""></div>
+    <div class="fone g"><img src="img/s2-cardapio.png" alt=""></div>
+    <div class="fone"><img src="img/s5-carrinho.png" alt=""></div>
+  </div>
+  <div class="capa-base">
+    <div><small>Preparada para</small><b>Sr. John Chocolates &amp; Café<br>Morro Agudo · SP</b></div>
+    <div><small>Por</small><b>DuoTech<br>duotechsistem.com.br</b></div>
+    <div><small>Data</small><b>12 de novembro de 2026<br>Válida por 15 dias</b></div>
+  </div>
+</section>
+
+<!-- ============================== 2. O QUE MUDA ============================== -->
+<section class="pagina">
+  <div class="eyebrow">O que muda</div>
+  <h2>Do PDF para um cardápio que vende</h2>
+  <p class="lead">Hoje o link da bio abre o arquivo do cardápio no Canva. Funciona, mas dá trabalho para o cliente ler no celular e o pedido ainda é feito todo à mão na conversa.</p>
+
+  <div class="comparar">
+    <div class="bloco hoje">
+      <h3>Hoje</h3>
+      <ul class="lista">
+        <li>Link da bio abre um arquivo de 6 páginas, pensado para impressão</li>
+        <li>No celular é preciso dar zoom e arrastar para ler os preços</li>
+        <li>Não dá para buscar um produto</li>
+        <li>O pedido é montado por mensagem, item por item</li>
+        <li>Sabor, tamanho e troco são perguntados um a um</li>
+        <li>Na mesa, o cliente precisa chamar alguém para pedir</li>
+      </ul>
+    </div>
+    <div class="bloco novo">
+      <h3>Com o novo cardápio</h3>
+      <ul class="lista">
+        <li>Página da bio com a cara da marca e todos os contatos</li>
+        <li>Cardápio feito para celular, com fotos e categorias</li>
+        <li>Busca: digitou "nutella", aparecem todos os itens</li>
+        <li>O cliente monta o pedido sozinho e envia pronto</li>
+        <li>Tamanho, sabor, observação e troco já vêm escritos</li>
+        <li>QR code na mesa: o pedido já chega com o número dela</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="destaques">
+    <div class="destaque"><div class="big">0%</div><p>de comissão sobre as vendas. O pedido vai direto para o WhatsApp da loja.</p></div>
+    <div class="destaque"><div class="big">Sem app</div><p>O cliente abre pelo link ou pela câmera do celular. Não precisa baixar nada.</p></div>
+    <div class="destaque"><div class="big">Na sua mão</div><p>Mudou um preço ou entrou um produto novo? A gente atualiza para você, sem custo extra.</p></div>
+  </div>
+
+  <h3 style="margin-top:12mm">Como funciona</h3>
+  <div class="fluxo" style="margin-top:4mm">
+    <div class="etapa"><div class="ic">📱</div><b>Abre o cardápio</b><span>Pelo link da bio, pelo QR da mesa ou por um link enviado no WhatsApp</span></div>
+    <div class="seta">→</div>
+    <div class="etapa"><div class="ic">🛒</div><b>Monta o pedido</b><span>Escolhe itens, tamanhos e sabores, retirada, entrega ou mesa, e a forma de pagamento</span></div>
+    <div class="seta">→</div>
+    <div class="etapa"><div class="ic">💬</div><b>Chega no WhatsApp</b><span>A loja recebe o pedido pronto e organizado, e responde na mesma conversa</span></div>
+  </div>
+
+  <div class="rodape"><span>DuoTech · Proposta para Sr. John Chocolates &amp; Café</span><span>2</span></div>
+</section>
+
+<!-- ============================== 3. DEMONSTRATIVO: CARDÁPIO ============================== -->
+<section class="pagina">
+  <div class="eyebrow">Demonstrativo · 1 de 3</div>
+  <h2>Link da bio e cardápio</h2>
+  <p class="soft">Telas reais do sistema já montado com o cardápio do Sr. John (os 92 itens e preços do Canva atual).</p>
+  <div class="telas">
+    <figure class="tela"><div class="fone"><img src="img/s1-bio.png" alt=""></div>
+      <figcaption><b><span class="num">1</span>Link da bio</b><span>Cardápio e pedidos em destaque, WhatsApp, presentes, reserva do espaço, como chegar e Instagram.</span></figcaption></figure>
+    <figure class="tela"><div class="fone"><img src="img/s2-cardapio.png" alt=""></div>
+      <figcaption><b><span class="num">2</span>Cardápio online</b><span>Categorias no topo, busca, preços claros e descrição de cada item. Modo claro e escuro.</span></figcaption></figure>
+    <figure class="tela"><div class="fone"><img src="img/s3-fotos.png" alt=""></div>
+      <figcaption><b><span class="num">3</span>Fotos e tamanhos</b><span>Foto dos produtos e cada tamanho com o seu preço. Um toque no "+" e já vai para o pedido.</span></figcaption></figure>
+  </div>
+  <div class="demo-box">
+    <div class="qr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39 39" shape-rendering="crispEdges" role="img" aria-label="QR Code da demonstração"><rect width="39" height="39" fill="#fff"/><path d="M1 1h1v1h-1zM2 1h1v1h-1zM3 1h1v1h-1zM4 1h1v1h-1zM5 1h1v1h-1zM6 1h1v1h-1zM7 1h1v1h-1zM11 1h1v1h-1zM14 1h1v1h-1zM16 1h1v1h-1zM17 1h1v1h-1zM19 1h1v1h-1zM20 1h1v1h-1zM22 1h1v1h-1zM24 1h1v1h-1zM25 1h1v1h-1zM27 1h1v1h-1zM31 1h1v1h-1zM32 1h1v1h-1zM33 1h1v1h-1zM34 1h1v1h-1zM35 1h1v1h-1zM36 1h1v1h-1zM37 1h1v1h-1zM1 2h1v1h-1zM7 2h1v1h-1zM9 2h1v1h-1zM12 2h1v1h-1zM16 2h1v1h-1zM17 2h1v1h-1zM18 2h1v1h-1zM19 2h1v1h-1zM21 2h1v1h-1zM23 2h1v1h-1zM29 2h1v1h-1zM31 2h1v1h-1zM37 2h1v1h-1zM1 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM5 3h1v1h-1zM7 3h1v1h-1zM10 3h1v1h-1zM12 3h1v1h-1zM13 3h1v1h-1zM14 3h1v1h-1zM17 3h1v1h-1zM19 3h1v1h-1zM20 3h1v1h-1zM22 3h1v1h-1zM25 3h1v1h-1zM26 3h1v1h-1zM27 3h1v1h-1zM28 3h1v1h-1zM29 3h1v1h-1zM31 3h1v1h-1zM33 3h1v1h-1zM34 3h1v1h-1zM35 3h1v1h-1zM37 3h1v1h-1zM1 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM7 4h1v1h-1zM9 4h1v1h-1zM10 4h1v1h-1zM11 4h1v1h-1zM12 4h1v1h-1zM14 4h1v1h-1zM17 4h1v1h-1zM18 4h1v1h-1zM19 4h1v1h-1zM20 4h1v1h-1zM22 4h1v1h-1zM26 4h1v1h-1zM28 4h1v1h-1zM29 4h1v1h-1zM31 4h1v1h-1zM33 4h1v1h-1zM34 4h1v1h-1zM35 4h1v1h-1zM37 4h1v1h-1zM1 5h1v1h-1zM3 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM7 5h1v1h-1zM9 5h1v1h-1zM10 5h1v1h-1zM11 5h1v1h-1zM14 5h1v1h-1zM16 5h1v1h-1zM18 5h1v1h-1zM24 5h1v1h-1zM27 5h1v1h-1zM31 5h1v1h-1zM33 5h1v1h-1zM34 5h1v1h-1zM35 5h1v1h-1zM37 5h1v1h-1zM1 6h1v1h-1zM7 6h1v1h-1zM14 6h1v1h-1zM20 6h1v1h-1zM21 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM31 6h1v1h-1zM37 6h1v1h-1zM1 7h1v1h-1zM2 7h1v1h-1zM3 7h1v1h-1zM4 7h1v1h-1zM5 7h1v1h-1zM6 7h1v1h-1zM7 7h1v1h-1zM9 7h1v1h-1zM11 7h1v1h-1zM13 7h1v1h-1zM15 7h1v1h-1zM17 7h1v1h-1zM19 7h1v1h-1zM21 7h1v1h-1zM23 7h1v1h-1zM25 7h1v1h-1zM27 7h1v1h-1zM29 7h1v1h-1zM31 7h1v1h-1zM32 7h1v1h-1zM33 7h1v1h-1zM34 7h1v1h-1zM35 7h1v1h-1zM36 7h1v1h-1zM37 7h1v1h-1zM9 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM13 8h1v1h-1zM15 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM21 8h1v1h-1zM23 8h1v1h-1zM25 8h1v1h-1zM26 8h1v1h-1zM28 8h1v1h-1zM29 8h1v1h-1zM2 9h1v1h-1zM4 9h1v1h-1zM5 9h1v1h-1zM6 9h1v1h-1zM7 9h1v1h-1zM9 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM14 9h1v1h-1zM16 9h1v1h-1zM18 9h1v1h-1zM23 9h1v1h-1zM24 9h1v1h-1zM25 9h1v1h-1zM26 9h1v1h-1zM29 9h1v1h-1zM30 9h1v1h-1zM31 9h1v1h-1zM33 9h1v1h-1zM34 9h1v1h-1zM36 9h1v1h-1zM1 10h1v1h-1zM3 10h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM8 10h1v1h-1zM10 10h1v1h-1zM12 10h1v1h-1zM15 10h1v1h-1zM16 10h1v1h-1zM20 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM25 10h1v1h-1zM26 10h1v1h-1zM31 10h1v1h-1zM33 10h1v1h-1zM34 10h1v1h-1zM35 10h1v1h-1zM36 10h1v1h-1zM7 11h1v1h-1zM8 11h1v1h-1zM13 11h1v1h-1zM15 11h1v1h-1zM17 11h1v1h-1zM22 11h1v1h-1zM24 11h1v1h-1zM25 11h1v1h-1zM26 11h1v1h-1zM30 11h1v1h-1zM31 11h1v1h-1zM32 11h1v1h-1zM33 11h1v1h-1zM36 11h1v1h-1zM37 11h1v1h-1zM9 12h1v1h-1zM13 12h1v1h-1zM14 12h1v1h-1zM16 12h1v1h-1zM19 12h1v1h-1zM20 12h1v1h-1zM21 12h1v1h-1zM24 12h1v1h-1zM27 12h1v1h-1zM28 12h1v1h-1zM30 12h1v1h-1zM31 12h1v1h-1zM33 12h1v1h-1zM34 12h1v1h-1zM35 12h1v1h-1zM36 12h1v1h-1zM37 12h1v1h-1zM5 13h1v1h-1zM6 13h1v1h-1zM7 13h1v1h-1zM9 13h1v1h-1zM10 13h1v1h-1zM11 13h1v1h-1zM12 13h1v1h-1zM13 13h1v1h-1zM14 13h1v1h-1zM15 13h1v1h-1zM16 13h1v1h-1zM17 13h1v1h-1zM20 13h1v1h-1zM21 13h1v1h-1zM24 13h1v1h-1zM29 13h1v1h-1zM31 13h1v1h-1zM34 13h1v1h-1zM36 13h1v1h-1zM2 14h1v1h-1zM3 14h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM6 14h1v1h-1zM9 14h1v1h-1zM10 14h1v1h-1zM12 14h1v1h-1zM13 14h1v1h-1zM14 14h1v1h-1zM15 14h1v1h-1zM19 14h1v1h-1zM22 14h1v1h-1zM23 14h1v1h-1zM24 14h1v1h-1zM26 14h1v1h-1zM27 14h1v1h-1zM28 14h1v1h-1zM29 14h1v1h-1zM30 14h1v1h-1zM33 14h1v1h-1zM35 14h1v1h-1zM2 15h1v1h-1zM4 15h1v1h-1zM5 15h1v1h-1zM7 15h1v1h-1zM8 15h1v1h-1zM10 15h1v1h-1zM13 15h1v1h-1zM14 15h1v1h-1zM15 15h1v1h-1zM16 15h1v1h-1zM18 15h1v1h-1zM20 15h1v1h-1zM21 15h1v1h-1zM27 15h1v1h-1zM28 15h1v1h-1zM31 15h1v1h-1zM33 15h1v1h-1zM34 15h1v1h-1zM35 15h1v1h-1zM36 15h1v1h-1zM37 15h1v1h-1zM1 16h1v1h-1zM2 16h1v1h-1zM3 16h1v1h-1zM4 16h1v1h-1zM6 16h1v1h-1zM9 16h1v1h-1zM13 16h1v1h-1zM14 16h1v1h-1zM18 16h1v1h-1zM19 16h1v1h-1zM21 16h1v1h-1zM22 16h1v1h-1zM23 16h1v1h-1zM25 16h1v1h-1zM27 16h1v1h-1zM28 16h1v1h-1zM30 16h1v1h-1zM31 16h1v1h-1zM33 16h1v1h-1zM34 16h1v1h-1zM35 16h1v1h-1zM1 17h1v1h-1zM3 17h1v1h-1zM5 17h1v1h-1zM6 17h1v1h-1zM7 17h1v1h-1zM8 17h1v1h-1zM15 17h1v1h-1zM16 17h1v1h-1zM17 17h1v1h-1zM18 17h1v1h-1zM21 17h1v1h-1zM22 17h1v1h-1zM23 17h1v1h-1zM24 17h1v1h-1zM25 17h1v1h-1zM26 17h1v1h-1zM28 17h1v1h-1zM31 17h1v1h-1zM35 17h1v1h-1zM3 18h1v1h-1zM8 18h1v1h-1zM10 18h1v1h-1zM11 18h1v1h-1zM13 18h1v1h-1zM14 18h1v1h-1zM15 18h1v1h-1zM17 18h1v1h-1zM20 18h1v1h-1zM21 18h1v1h-1zM23 18h1v1h-1zM24 18h1v1h-1zM28 18h1v1h-1zM32 18h1v1h-1zM35 18h1v1h-1zM36 18h1v1h-1zM1 19h1v1h-1zM5 19h1v1h-1zM7 19h1v1h-1zM9 19h1v1h-1zM10 19h1v1h-1zM18 19h1v1h-1zM19 19h1v1h-1zM20 19h1v1h-1zM22 19h1v1h-1zM25 19h1v1h-1zM27 19h1v1h-1zM28 19h1v1h-1zM29 19h1v1h-1zM30 19h1v1h-1zM35 19h1v1h-1zM37 19h1v1h-1zM2 20h1v1h-1zM5 20h1v1h-1zM6 20h1v1h-1zM8 20h1v1h-1zM10 20h1v1h-1zM11 20h1v1h-1zM13 20h1v1h-1zM14 20h1v1h-1zM16 20h1v1h-1zM17 20h1v1h-1zM19 20h1v1h-1zM20 20h1v1h-1zM24 20h1v1h-1zM26 20h1v1h-1zM29 20h1v1h-1zM30 20h1v1h-1zM31 20h1v1h-1zM34 20h1v1h-1zM36 20h1v1h-1zM37 20h1v1h-1zM1 21h1v1h-1zM3 21h1v1h-1zM5 21h1v1h-1zM6 21h1v1h-1zM7 21h1v1h-1zM9 21h1v1h-1zM10 21h1v1h-1zM11 21h1v1h-1zM12 21h1v1h-1zM14 21h1v1h-1zM17 21h1v1h-1zM18 21h1v1h-1zM24 21h1v1h-1zM27 21h1v1h-1zM28 21h1v1h-1zM29 21h1v1h-1zM30 21h1v1h-1zM31 21h1v1h-1zM33 21h1v1h-1zM34 21h1v1h-1zM37 21h1v1h-1zM2 22h1v1h-1zM3 22h1v1h-1zM5 22h1v1h-1zM6 22h1v1h-1zM8 22h1v1h-1zM9 22h1v1h-1zM10 22h1v1h-1zM13 22h1v1h-1zM14 22h1v1h-1zM15 22h1v1h-1zM16 22h1v1h-1zM18 22h1v1h-1zM19 22h1v1h-1zM23 22h1v1h-1zM26 22h1v1h-1zM28 22h1v1h-1zM29 22h1v1h-1zM32 22h1v1h-1zM33 22h1v1h-1zM36 22h1v1h-1zM2 23h1v1h-1zM6 23h1v1h-1zM7 23h1v1h-1zM10 23h1v1h-1zM11 23h1v1h-1zM12 23h1v1h-1zM13 23h1v1h-1zM16 23h1v1h-1zM19 23h1v1h-1zM20 23h1v1h-1zM21 23h1v1h-1zM24 23h1v1h-1zM26 23h1v1h-1zM28 23h1v1h-1zM33 23h1v1h-1zM34 23h1v1h-1zM36 23h1v1h-1zM37 23h1v1h-1zM2 24h1v1h-1zM3 24h1v1h-1zM5 24h1v1h-1zM6 24h1v1h-1zM10 24h1v1h-1zM13 24h1v1h-1zM15 24h1v1h-1zM16 24h1v1h-1zM17 24h1v1h-1zM18 24h1v1h-1zM19 24h1v1h-1zM20 24h1v1h-1zM23 24h1v1h-1zM24 24h1v1h-1zM25 24h1v1h-1zM26 24h1v1h-1zM28 24h1v1h-1zM29 24h1v1h-1zM30 24h1v1h-1zM32 24h1v1h-1zM34 24h1v1h-1zM35 24h1v1h-1zM36 24h1v1h-1zM1 25h1v1h-1zM2 25h1v1h-1zM4 25h1v1h-1zM5 25h1v1h-1zM6 25h1v1h-1zM7 25h1v1h-1zM8 25h1v1h-1zM10 25h1v1h-1zM11 25h1v1h-1zM12 25h1v1h-1zM13 25h1v1h-1zM14 25h1v1h-1zM16 25h1v1h-1zM17 25h1v1h-1zM21 25h1v1h-1zM24 25h1v1h-1zM26 25h1v1h-1zM32 25h1v1h-1zM34 25h1v1h-1zM35 25h1v1h-1zM36 25h1v1h-1zM37 25h1v1h-1zM1 26h1v1h-1zM3 26h1v1h-1zM4 26h1v1h-1zM8 26h1v1h-1zM9 26h1v1h-1zM10 26h1v1h-1zM11 26h1v1h-1zM12 26h1v1h-1zM16 26h1v1h-1zM17 26h1v1h-1zM19 26h1v1h-1zM20 26h1v1h-1zM24 26h1v1h-1zM26 26h1v1h-1zM27 26h1v1h-1zM31 26h1v1h-1zM33 26h1v1h-1zM35 26h1v1h-1zM1 27h1v1h-1zM2 27h1v1h-1zM4 27h1v1h-1zM7 27h1v1h-1zM15 27h1v1h-1zM17 27h1v1h-1zM18 27h1v1h-1zM19 27h1v1h-1zM21 27h1v1h-1zM28 27h1v1h-1zM31 27h1v1h-1zM32 27h1v1h-1zM35 27h1v1h-1zM36 27h1v1h-1zM37 27h1v1h-1zM1 28h1v1h-1zM4 28h1v1h-1zM6 28h1v1h-1zM8 28h1v1h-1zM10 28h1v1h-1zM11 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM16 28h1v1h-1zM17 28h1v1h-1zM18 28h1v1h-1zM19 28h1v1h-1zM23 28h1v1h-1zM24 28h1v1h-1zM25 28h1v1h-1zM29 28h1v1h-1zM30 28h1v1h-1zM35 28h1v1h-1zM36 28h1v1h-1zM1 29h1v1h-1zM4 29h1v1h-1zM7 29h1v1h-1zM9 29h1v1h-1zM10 29h1v1h-1zM15 29h1v1h-1zM18 29h1v1h-1zM19 29h1v1h-1zM22 29h1v1h-1zM23 29h1v1h-1zM24 29h1v1h-1zM25 29h1v1h-1zM26 29h1v1h-1zM28 29h1v1h-1zM29 29h1v1h-1zM30 29h1v1h-1zM31 29h1v1h-1zM32 29h1v1h-1zM33 29h1v1h-1zM35 29h1v1h-1zM36 29h1v1h-1zM9 30h1v1h-1zM11 30h1v1h-1zM13 30h1v1h-1zM17 30h1v1h-1zM19 30h1v1h-1zM29 30h1v1h-1zM33 30h1v1h-1zM34 30h1v1h-1zM35 30h1v1h-1zM36 30h1v1h-1zM1 31h1v1h-1zM2 31h1v1h-1zM3 31h1v1h-1zM4 31h1v1h-1zM5 31h1v1h-1zM6 31h1v1h-1zM7 31h1v1h-1zM13 31h1v1h-1zM14 31h1v1h-1zM16 31h1v1h-1zM17 31h1v1h-1zM21 31h1v1h-1zM22 31h1v1h-1zM23 31h1v1h-1zM24 31h1v1h-1zM25 31h1v1h-1zM26 31h1v1h-1zM27 31h1v1h-1zM28 31h1v1h-1zM29 31h1v1h-1zM31 31h1v1h-1zM33 31h1v1h-1zM34 31h1v1h-1zM35 31h1v1h-1zM36 31h1v1h-1zM37 31h1v1h-1zM1 32h1v1h-1zM7 32h1v1h-1zM9 32h1v1h-1zM10 32h1v1h-1zM11 32h1v1h-1zM15 32h1v1h-1zM16 32h1v1h-1zM17 32h1v1h-1zM20 32h1v1h-1zM23 32h1v1h-1zM26 32h1v1h-1zM28 32h1v1h-1zM29 32h1v1h-1zM33 32h1v1h-1zM34 32h1v1h-1zM36 32h1v1h-1zM37 32h1v1h-1zM1 33h1v1h-1zM3 33h1v1h-1zM4 33h1v1h-1zM5 33h1v1h-1zM7 33h1v1h-1zM9 33h1v1h-1zM10 33h1v1h-1zM13 33h1v1h-1zM17 33h1v1h-1zM22 33h1v1h-1zM23 33h1v1h-1zM24 33h1v1h-1zM27 33h1v1h-1zM28 33h1v1h-1zM29 33h1v1h-1zM30 33h1v1h-1zM31 33h1v1h-1zM32 33h1v1h-1zM33 33h1v1h-1zM36 33h1v1h-1zM37 33h1v1h-1zM1 34h1v1h-1zM3 34h1v1h-1zM4 34h1v1h-1zM5 34h1v1h-1zM7 34h1v1h-1zM9 34h1v1h-1zM10 34h1v1h-1zM16 34h1v1h-1zM17 34h1v1h-1zM25 34h1v1h-1zM27 34h1v1h-1zM28 34h1v1h-1zM31 34h1v1h-1zM36 34h1v1h-1zM1 35h1v1h-1zM3 35h1v1h-1zM4 35h1v1h-1zM5 35h1v1h-1zM7 35h1v1h-1zM10 35h1v1h-1zM12 35h1v1h-1zM16 35h1v1h-1zM20 35h1v1h-1zM21 35h1v1h-1zM22 35h1v1h-1zM24 35h1v1h-1zM27 35h1v1h-1zM32 35h1v1h-1zM33 35h1v1h-1zM36 35h1v1h-1zM37 35h1v1h-1zM1 36h1v1h-1zM7 36h1v1h-1zM9 36h1v1h-1zM12 36h1v1h-1zM14 36h1v1h-1zM15 36h1v1h-1zM19 36h1v1h-1zM20 36h1v1h-1zM21 36h1v1h-1zM24 36h1v1h-1zM25 36h1v1h-1zM28 36h1v1h-1zM30 36h1v1h-1zM31 36h1v1h-1zM33 36h1v1h-1zM35 36h1v1h-1zM36 36h1v1h-1zM37 36h1v1h-1zM1 37h1v1h-1zM2 37h1v1h-1zM3 37h1v1h-1zM4 37h1v1h-1zM5 37h1v1h-1zM6 37h1v1h-1zM7 37h1v1h-1zM14 37h1v1h-1zM15 37h1v1h-1zM16 37h1v1h-1zM17 37h1v1h-1zM23 37h1v1h-1zM24 37h1v1h-1zM26 37h1v1h-1zM29 37h1v1h-1zM30 37h1v1h-1zM32 37h1v1h-1zM33 37h1v1h-1zM34 37h1v1h-1zM37 37h1v1h-1z" fill="#1b1411"/></svg></div>
+    <div>
+      <h3>Teste no seu celular</h3>
+      <p>Aponte a câmera para o QR code ou abra o link. Navegue pelo cardápio, monte um pedido e envie: ele chega no WhatsApp da loja marcado como teste.</p>
+      <div class="url">https://claude.ai/artifact/2kh8BcygGocpQYQvQ25i8i</div>
+    </div>
+  </div>
+  <div class="rodape"><span>DuoTech · Proposta para Sr. John Chocolates &amp; Café</span><span>3</span></div>
+</section>
+
+<!-- ============================== 4. DEMONSTRATIVO: PEDIDO ============================== -->
+<section class="pagina">
+  <div class="eyebrow">Demonstrativo · 2 de 3</div>
+  <h2>O cliente monta o pedido</h2>
+  <p class="soft">Retirada no balcão, entrega ou pedido na mesa: tudo pelo mesmo cardápio.</p>
+  <div class="telas">
+    <figure class="tela"><div class="fone"><img src="img/s4-item.png" alt=""></div>
+      <figcaption><b><span class="num">4</span>Escolhe o item</b><span>Sabor, tamanho, quantidade e observação ("bem quente", "sem açúcar"). Nada fica faltando.</span></figcaption></figure>
+    <figure class="tela"><div class="fone"><img src="img/s5-carrinho.png" alt=""></div>
+      <figcaption><b><span class="num">5</span>Confere o pedido</b><span>Ajusta quantidades e vê o total antes de enviar.</span></figcaption></figure>
+    <figure class="tela"><div class="fone"><img src="img/s6-finalizar.png" alt=""></div>
+      <figcaption><b><span class="num">6</span>Retirada, entrega ou mesa</b><span>Nome e endereço (ficam salvos para a próxima vez). Na mesa, o número já vem do QR code.</span></figcaption></figure>
+  </div>
+  <div class="rodape"><span>DuoTech · Proposta para Sr. John Chocolates &amp; Café</span><span>4</span></div>
+</section>
+
+<!-- ============================== 5. DEMONSTRATIVO: PAGAMENTO + WHATSAPP ============================== -->
+<section class="pagina">
+  <div class="eyebrow">Demonstrativo · 3 de 3</div>
+  <h2>Pagamento e pedido no WhatsApp</h2>
+  <p class="soft">Três formas de pagar. O pedido chega organizado no WhatsApp (16) 99241-2566, pronto para a cozinha.</p>
+  <div class="p5">
+    <div class="p5-fones">
+    <figure class="tela"><div class="fone"><img src="img/s6b-pagamento.png" alt=""></div>
+      <figcaption><b><span class="num">7</span>Forma de pagamento</b><span>Pix agora, cartão online (link de pagamento) ou pagar na retirada, na entrega ou no caixa, com troco.</span></figcaption></figure>
+    <figure class="tela"><div class="fone"><img src="img/s7-pix.png" alt=""></div>
+      <figcaption><b><span class="num">8</span>Pix com o valor certo</b><span>QR Code e Pix copia e cola já com o valor do pedido, no padrão do Banco Central.</span></figcaption></figure>
+    </div>
+    <figure class="tela p5-chat">
+      <div class="chat">
+        <div class="chat-topo"><div class="av">M</div><div><b style="color:var(--ink)">Maria</b><br>pedido enviado pelo cardápio</div></div>
+        <div class="balao"><b>NOVO PEDIDO · Sr. John</b> #GDW5
+
+🪑 <b>Mesa 5</b>
+Nome: Maria
+
+<b>Itens</b>
+2x Café coado — R$ 23,80
+   ↳ bem quente
+1x Cappuccino · Italiano (200 ml) — R$ 13,90
+1x Refrigerante — Guaraná — R$ 7,90
+1x Queijo quente — R$ 19,90
+   ↳ Mussarela e prato
+
+Subtotal: R$ 65,50
+<b>Total: R$ 65,50</b>
+
+💳 Pagamento: Dinheiro no caixa (troco para R$ 100)<div class="h">14:32 ✓✓</div></div>
+      </div>
+      <figcaption style="max-width:none"><b><span class="num">9</span>Assim o pedido chega na loja</b><span>Número do pedido, mesa ou endereço, itens com observações, total e pagamento. É só preparar.</span></figcaption>
+    </figure>
+  </div>
+  <div class="rodape"><span>DuoTech · Proposta para Sr. John Chocolates &amp; Café</span><span>5</span></div>
+</section>
+
+<!-- ============================== 6. QR CODES ============================== -->
+<section class="pagina">
+  <div class="eyebrow">QR codes</div>
+  <h2>Cardápio na mesa, no balcão e na vitrine</h2>
+  <div class="duas" style="grid-template-columns: 92mm 1fr;">
+    <img class="qr-img" src="img/s8-qrcodes.png" alt="Folha de QR codes para imprimir">
+    <div>
+      <p class="lead" style="margin-top:2mm">Cada mesa ganha o seu QR code. O cliente aponta a câmera, vê o cardápio e o pedido já chega marcado com o número da mesa.</p>
+      <ul class="lista" style="list-style:none;padding:0">
+        <li style="margin-bottom:3mm">✓ <b>QR geral</b> para o balcão, a vitrine, os stories e o cardápio impresso</li>
+        <li style="margin-bottom:3mm">✓ <b>Um QR por mesa</b>, com o número em destaque</li>
+        <li style="margin-bottom:3mm">✓ Arquivo pronto para imprimir: 4 por folha A4, com linha de corte</li>
+        <li style="margin-bottom:3mm">✓ Também em imagem grande (PNG) para usar nas artes do Instagram</li>
+        <li style="margin-bottom:3mm">✓ Mudou o cardápio? O QR continua o mesmo: não precisa reimprimir</li>
+      </ul>
+      <div class="caixa" style="margin-top:6mm">
+        <h3>Dica</h3>
+        <p class="soft" style="margin:0">Displays de acrílico para mesa (tamanho A6) deixam o QR com cara de cardápio e custam pouco em gráficas e lojas online.</p>
+      </div>
+    </div>
+  </div>
+  <div class="rodape"><span>DuoTech · Proposta para Sr. John Chocolates &amp; Café</span><span>6</span></div>
+</section>
+
+<!-- ============================== 7. PLANOS ============================== -->
+<section class="pagina">
+  <div class="eyebrow">Investimento</div>
+  <h2>Quanto custa</h2>
+  <p class="soft">Uma oferta só, com tudo incluído. Sem comissão sobre as vendas.</p>
+
+  <div class="oferta">
+    <div class="oferta-topo">
+      <div><div class="nome">Tudo incluído</div><h3>Link da bio, cardápio, pedidos e QR das mesas</h3></div>
+      <div class="valor"><div class="n">R$ 60</div><div class="l">implantação<br>(pagamento único)</div></div>
+      <div class="valor"><div class="n">R$ 99<small>/mês</small></div><div class="l">mensalidade</div></div>
+    </div>
+    <div class="oferta-corpo">
+      <h4>O que está incluído</h4>
+      <ul class="lista">
+        <li>Link da bio do Instagram personalizado</li>
+        <li>Cardápio online com fotos, categorias e busca</li>
+        <li>Funciona em qualquer celular, sem baixar app</li>
+        <li>QR codes para mesas, balcão e vitrine</li>
+        <li>Botões de WhatsApp, presentes, reservas e localização</li>
+        <li>Hospedagem, suporte e manutenção</li>
+      </ul>
+      <ul class="lista">
+        <li>Pedidos pelo cardápio: retirada, entrega e na mesa</li>
+        <li>Escolha de tamanho, sabor e observações</li>
+        <li>Pedido organizado direto no WhatsApp da loja</li>
+        <li>QR da mesa identifica o número da mesa</li>
+        <li>Pix com QR Code no valor exato e link de cartão</li>
+        <li>Atualização de preços, itens e fotos</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="resumo">
+    <thead><tr><th>Item</th><th>Quando</th><th>Valor</th></tr></thead>
+    <tbody>
+      <tr><td>Implantação (montagem do link da bio, cardápio e QR codes)</td><td>Uma vez</td><td class="v">R$ 60</td></tr>
+      <tr><td>Mensalidade (sistema no ar, pedidos, suporte e atualizações)</td><td>Todo mês</td><td class="v">R$ 99</td></tr>
+      <tr class="rec"><td><b>Comissão sobre as vendas</b></td><td>—</td><td class="v">0%</td></tr>
+    </tbody>
+  </table>
+  <p class="soft" style="margin-top:5mm; font-size:9.3pt">A mensalidade sai por cerca de <b style="color:var(--ink)">R$ 3,30 por dia</b>, menos que um café coado.</p>
+
+  <div class="rodape"><span>DuoTech · Proposta para Sr. John Chocolates &amp; Café</span><span>7</span></div>
+</section>
+
+<!-- ============================== 8. PRÓXIMOS PASSOS ============================== -->
+<section class="pagina">
+  <div class="eyebrow">Próximos passos</div>
+  <h2>Como colocamos no ar</h2>
+  <div class="passos">
+    <div class="passo"><div><b>Aprovação do plano</b><span>Você confirma por WhatsApp e já começamos a montar.</span></div></div>
+    <div class="passo"><div><b>Envio dos materiais</b><span>Logo em boa qualidade, fotos dos produtos e os dados da lista abaixo.</span></div></div>
+    <div class="passo"><div><b>Publicação</b><span>Colocamos o site no ar, testamos com você e trocamos o link da bio do Instagram.</span></div></div>
+    <div class="passo"><div><b>QR codes</b><span>Entregamos o arquivo dos QR codes das mesas pronto para imprimir.</span></div></div>
+  </div>
+
+  <div class="grade2">
+    <div class="caixa">
+      <h3>O que precisamos de vocês</h3>
+      <ul>
+        <li>Logo original (PNG ou PDF)</li>
+        <li>Fotos dos produtos em boa resolução</li>
+        <li>Quantidade de mesas</li>
+        <li>Chave Pix da loja</li>
+        <li>Taxa de entrega (ou "a combinar")</li>
+        <li>Opcional: link de pagamento de cartão (Mercado Pago, InfinitePay etc.)</li>
+      </ul>
+    </div>
+    <div class="caixa">
+      <h3>Condições</h3>
+      <ul>
+        <li>Implantação de R$ 60, paga uma única vez, e mensalidade de R$ 99. Pagamentos por Pix</li>
+        <li>No ar em até 3 dias úteis após o envio dos materiais</li>
+        <li>Domínio próprio (ex.: srjohn.com.br) é opcional, com registro anual à parte</li>
+        <li>As taxas do cartão online são cobradas pela operadora escolhida</li>
+        <li>Proposta válida por 15 dias</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="assina">
+    <div class="linha">Sr. John Chocolates &amp; Café · aceite</div>
+    <div class="linha">DuoTech</div>
+  </div>
+
+  <div class="rodape"><span>DuoTech · duotechsistem.com.br</span><span>8</span></div>
+</section>
+
+</body>
+</html>
