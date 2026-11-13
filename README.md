@@ -6,6 +6,8 @@ link da bio do Instagram, cardápio online com fotos, pedidos pelo WhatsApp
 
 HTML + CSS + JavaScript puro, **sem build** e sem servidor. Hospedagem: Cloudflare (pasta `public/`).
 
+**No ar:** https://sr-john.duotechsistemas.workers.dev/ · cardápio: https://sr-john.duotechsistemas.workers.dev/cardapio/ · QR codes: https://sr-john.duotechsistemas.workers.dev/qrcodes/
+
 ## Estrutura
 
 ```
@@ -61,13 +63,13 @@ Com 400 px ou mais, o toque para ampliar liga sozinho. Logo: `public/img/logo.pn
 
    | Campo | Valor |
    |---|---|
-   | Project name | `srjohn` (igual ao `"name"` do `wrangler.jsonc`) |
+   | Project name | `sr-john` (igual ao `"name"` do `wrangler.jsonc`) |
    | Production branch | `main` |
    | Build command | *(vazio)* |
    | Deploy command | `npx wrangler deploy` |
 
-4. **Deploy** → aparece `https://srjohn.<sua-conta>.workers.dev`.
-5. Domínio: **srjohn → Settings → Domains & Routes → Add → Custom domain** →
+4. **Deploy** → aparece o endereço `workers.dev`.
+5. Domínio: **sr-john → Settings → Domains & Routes → Add → Custom domain** →
    `srjohn.duotechsistem.com.br` (ou o domínio do cliente).
 
 Depois disso, **todo envio para a `main` publica sozinho**.
